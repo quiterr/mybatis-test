@@ -4,6 +4,6 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.quiterr.mapper.DeviceMapper">
     <select id="findByPosition" resultType="com.quiterr.model.Device">
-        select * from devices where POSITION = #{POSITION}
+        select * from devices where position = #{position}
     </select>
 </mapper>

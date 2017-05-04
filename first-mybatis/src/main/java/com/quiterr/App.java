@@ -1,5 +1,6 @@
 package com.quiterr;
 
+import com.quiterr.mapper.DeviceMapper;
 import com.quiterr.model.Device;
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
@@ -23,9 +24,25 @@ public class App {
         }
         SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
         SqlSession sqlSession = sqlSessionFactory.openSession();
+        System.out.println(oldMethod(sqlSession));
+        sqlSession = sqlSessionFactory.openSession();
+        System.out.println(newMethod(sqlSession));
+    }
+
+    public static Device oldMethod(SqlSession sqlSession){
         try {
             Device device = (Device) sqlSession.selectOne("com.quiterr.mapper.DeviceMapper.findByPosition", "机房");
-            System.out.println(device);
+            return device;
+        } finally {
+            sqlSession.close();
+        }
+    }
+
+    public static Device newMethod(SqlSession sqlSession){
+        try {
+            DeviceMapper deviceMapper = sqlSession.getMapper(DeviceMapper.class);
+            Device device = deviceMapper.findByPosition("机房");
+            return device;
         } finally {
             sqlSession.close();
         }
