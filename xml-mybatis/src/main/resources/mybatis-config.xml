@@ -10,6 +10,12 @@
     <settings>
         <setting name="mapUnderscoreToCamelCase" value="true"/>
     </settings>
+    <typeAliases>
+        <!--指定某个类的别名-->
+        <!--<typeAlias alias="Device" type="com.quiterr.model.Device"/>-->
+        <!--使用首字母小写的非限定类名来作为它的别名。比如 domain.blog.Author 的别名为 author若有注解，则别名为其注解值。-->
+        <package name="com.quiterr.model"/>
+    </typeAliases>
     <environments default="development">
         <environment id="development">
             <transactionManager type="JDBC"/>
