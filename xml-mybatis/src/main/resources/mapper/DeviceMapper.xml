@@ -6,4 +6,16 @@
     <select id="findByPosition" resultType="Device">
         select * from devices where position = #{position}
     </select>
+
+    <insert id="insertOne" parameterType="Device">
+        insert into devices (device_id,type,position) values
+        (#{device.deviceId},#{device.type},#{device.position})
+    </insert>
+
+    <insert id="insertMany" parameterType="java.util.List">
+        insert into devices (device_id,type,position) values
+        <foreach item="item" collection="deviceList" separator=",">
+            (#{item.deviceId},#{item.type},#{item.position})
+        </foreach>
+    </insert>
 </mapper>

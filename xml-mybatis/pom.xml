@@ -9,7 +9,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>first-mybatis</artifactId>
+    <artifactId>xml-mybatis</artifactId>
 
     <dependencies>
         <dependency>
