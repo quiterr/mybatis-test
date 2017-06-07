@@ -25,7 +25,7 @@ public class App {
             e.printStackTrace();
         }
         SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
-        SqlSession sqlSession = sqlSessionFactory.openSession();
+        SqlSession sqlSession = sqlSessionFactory.openSession(true); //注意这里不传true的话不会自动提交事务
 //        System.out.println(oldMethod(sqlSession));
 //        sqlSession = sqlSessionFactory.openSession();
 //        System.out.println(newMethod(sqlSession));
@@ -58,6 +58,7 @@ public class App {
             DeviceMapper deviceMapper = sqlSession.getMapper(DeviceMapper.class);
             Device device = new Device();
             device.setDeviceId(1);
+            device.setType(2);
             device.setPosition("重庆");
             deviceMapper.insertOne(device);
         } finally {
